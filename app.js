@@ -163,3 +163,38 @@ class Order {
     console.log("=======================================================\n");
   }
 }
+
+// 4. TESTING CODE & SCENARIOS 
+
+console.log("--- STARTING SYSTEM TESTS ---");
+
+// Create an empty order
+const customerOrder = new Order();
+
+// Create food items across different classes
+const pizza = new Pizza("Regina", 120.00, "Large");
+const burger = new Burger("Zinger Burger", 65.00, true);
+const drink = new Drink("Coke", 20.00, "500ml");
+const dessert = new Dessert("Malva Pudding", 45.00, true);
+
+// Test Encapsulation & Invalid Price Handling
+console.log("\n[Test]: Testing invalid price encapsulation...");
+pizza.setPrice(-50); // Should trigger invalid price error message
+console.log(`Verified Price of Pizza remains: R${pizza.getPrice()}`);
+
+// Add items to the order
+console.log("\n[Test]: Adding items to order...");
+customerOrder.addItem(pizza);
+customerOrder.addItem(burger);
+customerOrder.addItem(drink);
+customerOrder.addItem(dessert);
+
+// Display initial summary
+customerOrder.displayOrderSummary();
+
+// Test item removal functionality
+console.log("[Test]: Removing the drink from the order...");
+customerOrder.removeItem(2); // Removes 'drink' at index 2
+
+
+customerOrder.displayOrderSummary();
